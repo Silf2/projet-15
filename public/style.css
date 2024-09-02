@@ -1,0 +1,105 @@
+* {
+    font-family: "DM Mono", monospace;
+}
+
+html, body {
+    background: #DFECF0;
+}
+
+header nav .nav-link {
+    font-size: 14px;
+    color: #333;
+    font-weight: 300;
+}
+
+.home-img {
+    aspect-ratio: 60/76;
+    object-fit: cover;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.home-title, h3 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31.25px;
+    text-transform: uppercase;
+}
+
+.about-title {
+    text-align: left;
+}
+
+p {
+    font-family: "DM Sans", sans-serif;
+}
+
+.btn {
+    border: 1px solid #333;
+    border-radius: 0;
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.btn:hover, .btn.active {
+    color: white;
+    background: #333;
+}
+
+.home-description {
+    font-weight: 300;
+    font-size: 18px;
+    text-align: right;
+    line-height: 23.5px;
+    max-width: 430px;
+    margin: 0;
+}
+
+.about-description {
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.83px;
+    text-align: left;
+    max-width: 341px;
+}
+
+a {
+    color: #333;
+    font-family: "DM Sans", sans-serif;
+}
+
+.guest {
+    border-top: 1px solid #333;
+}
+
+.guest h4 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.44px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.media img {
+    aspect-ratio: 404/524;
+    object-fit: cover;
+}
+
+.media-title {
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+}
+
+footer {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.23px;
+    text-align: right;
+}

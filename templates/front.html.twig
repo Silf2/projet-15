@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <nav>
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center py-4">
+                    <a href="{{ path('home') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="Ina Zaoui">
+                    </a>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('guests') }}">Invités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('portfolio') }}">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('about') }}">Qui suis-je ?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin_login') }}">Connexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container py-4">
+            {% block front %}{% endblock %}
+        </div>
+    </main>
+    <footer class="py-4 text-center">
+        Ina Zaoui copyright 2024©
+    </footer>
+{% endblock %}

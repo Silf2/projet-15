@@ -1,0 +1,17 @@
+{% extends 'front.html.twig' %}
+
+{% block front %}
+    <div class="row align-items-stretch">
+        <div class="col-6">
+            <img src="{{ asset('images/home.jpeg') }}" alt="Ina Zaoui" class="home-img w-100">
+        </div>
+        <div class="col-6">
+            <div class="d-flex flex-column justify-content-center align-items-end h-100 gap-3">
+                <img src="{{ asset('images/name.png') }}" alt="Ina Zaoui">
+                <h2 class="home-title">Photographe</h2>
+                <p class="home-description">l'objectif errant des horizons sans limites, parcourt le globe uniquement au gré des murmures de la nature, capturant le souffle du monde dans des cadres silencieux.</p>
+                <a href="{{ path('portfolio') }}">découvrir</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'admin.html.twig' %}
+
+{% block admin %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Medias</h1>
+        <a href="{{ path('admin_media_index') }}" class="btn btn-primary">Retour</a>
+    </div>
+    {{ form_start(form) }}
+        {{ form_row(form.user) }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ form_row(form.album) }}
+            {{ form_row(form.title) }}
+        {% endif %}
+        {{ form_row(form.file) }}
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}
