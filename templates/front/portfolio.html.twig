@@ -6,13 +6,13 @@
             <h3 class="mb-4">Portfolio</h3>
             <div class="mb-5 row">
                 <div class="col-2">
-                    <a class="btn w-100 py-3 {{ album is null ? 'active' }}" href="{{ path('portfolio') }}">
+                    <a class="btn w-100 py-3 {{ album is null ? 'active' }}" href="{{ path('app_portfolio') }}">
                         Toutes
                     </a>
                 </div>
                 {% for a in albums %}
                     <div class="col-2">
-                        <a class="btn w-100 py-3 {{ album == a ? 'active' }}" href="{{ path('portfolio', {id: a.id}) }}">
+                        <a class="btn w-100 py-3 {{ album == a ? 'active' }}" href="{{ path('app_portfolio', {id: a.id}) }}">
                             {{ a.name }}
                         </a>
                     </div>
