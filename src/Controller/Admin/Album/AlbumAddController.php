@@ -36,7 +36,7 @@ final class AlbumAddController
             $this->entityManager->persist($album);
             $this->entityManager->flush();
 
-            return new RedirectResponse($this->router->generate('admin_album_index'));
+            return new RedirectResponse($this->router->generate('app_admin_album_index'));
         }
 
         $content = $this->twig->render('admin/album/add.html.twig', ['form' => $form->createView()]);

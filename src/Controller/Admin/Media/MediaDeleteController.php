@@ -26,6 +26,6 @@ final class MediaDeleteController
         $this->entityManager->flush();
         unlink($media->getPath());
 
-        return new RedirectResponse($this->router->generate('admin_media_index'));
+        return new RedirectResponse($this->router->generate('app_admin_media_index'));
     }
 }

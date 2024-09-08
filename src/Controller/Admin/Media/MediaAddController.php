@@ -44,7 +44,7 @@ final class MediaAddController
             $this->entityManager->persist($media);
             $this->entityManager->flush();
 
-            return new RedirectResponse($this->router->generate('admin_media_index'));
+            return new RedirectResponse($this->router->generate('app_admin_media_index'));
         }
 
         $content = $this->twig->render('admin/media/add.html.twig', ['form' => $form->createView()]);

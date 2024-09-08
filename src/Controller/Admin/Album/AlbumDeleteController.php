@@ -25,6 +25,6 @@ final class AlbumDeleteController
         $this->entityManager->remove($media);
         $this->entityManager->flush();
 
-        return new RedirectResponse($this->router->generate('admin_album_index'));
+        return new RedirectResponse($this->router->generate('app_admin_album_index'));
     }
 }
