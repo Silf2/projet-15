@@ -17,6 +17,11 @@
                         <img src="{{ asset('images/logo.png') }}" alt="Ina Zaoui">
                     </a>
                     <ul class="nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_admin_media_index') }}">Admin</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_guests') }}">Invités</a>
                         </li>
@@ -27,7 +32,11 @@
                             <a class="nav-link" href="{{ path('app_about') }}">Qui suis-je ?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_admin_login') }}">Connexion</a>
+                            {% if app.user %}
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                            {% else %}
+                                <a class="nav-link" href="{{ path('app_admin_login') }}">Connexion</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
