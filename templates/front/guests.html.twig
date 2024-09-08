@@ -8,7 +8,7 @@
                 {% for guest in guests %}
                     <div class="guest py-5 d-flex justify-content-between align-items-center">
                         <h4>{{ guest.name }} ({{ guest.medias|length }})</h4>
-                        <a href="{{ path('guest', {id: guest.id}) }}">découvrir</a>
+                        <a href="{{ path('app_one_guest', {id: guest.id}) }}">découvrir</a>
                     </div>
                 {% endfor %}
             </div>
