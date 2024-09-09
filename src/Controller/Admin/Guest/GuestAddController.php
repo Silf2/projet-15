@@ -37,7 +37,7 @@ final class GuestAddController
         if ($form->isSubmitted() && $form->isValid()) {  
             $password = $user->getPassword();
             $user->setPassword($this->passwordHasher->hashPassword($user, $password));
-            $user->setRoles(['ROLES_USER']);
+            $user->setRoles(['ROLE_USER']);
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
