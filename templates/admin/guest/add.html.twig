@@ -1,0 +1,15 @@
+{% extends 'admin.html.twig' %}
+
+{% block admin %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Albums</h1>
+        <a href="{{ path('app_admin_album_index') }}" class="btn btn-primary">Retour</a>
+    </div>
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.password) }}
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}

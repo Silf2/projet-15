@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Home;
+namespace App\Controller\Admin\Guest;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,21 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 #[AsController]
-final class GuestController
+final class GuestPageController
 {
     public function __construct(
-        private Environment $twig,
         private EntityManagerInterface $entityManager,
+        private Environment $twig,
     )
     {}
 
-    #[Route("/guests", name:"app_guests")]
+    #[Route("/admin/guest", name: "app_admin_guest_index")]
     public function __invoke(): Response
     {
-        $guests = $this->entityManager->getRepository(User::class)->findBy(['roles' => ["ROLE_USER"]]);
-        $content = $this->twig->render('front/guests.html.twig', [
-            'guests' => $guests
-        ]);
+        $guests = $this->entityManager->getRepository(User::class)->findAll();
+        $content = $this->twig->render('admin/guest/index.html.twig', ['guests' => $guests]);
 
         return new Response($content);
     }
