@@ -5,6 +5,9 @@ namespace App\Controller\Home;
 use App\Entity\Album;
 use App\Entity\Media;
 use App\Entity\User;
+use App\Repository\AlbumRepository;
+use App\Repository\MediaRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
@@ -15,7 +18,9 @@ use Twig\Environment;
 final class PortfolioController
 {
     public function __construct(
-        private EntityManagerInterface $entityManager,
+        private AlbumRepository $albumRepository,
+        private MediaRepository $mediaRepository,
+        private UserRepository $userRepository,
         private Environment $twig,
     )
     {}
@@ -23,13 +28,13 @@ final class PortfolioController
     #[Route("/portfolio/{id}", name:"app_portfolio")]
     public function __invoke(?int $id = null): Response
     {
-        $albums = $this->entityManager->getRepository(Album::class)->findAll();
-        $album = $id ? $this->entityManager->getRepository(Album::class)->find($id) : null;
-        $user = $this->entityManager->getRepository(User::class)->findOneByAdmin(true);
+        $albums = $this->albumRepository->findAll();
+        $album = $id ? $this->albumRepository->find($id) : null;
+        $user = $this->userRepository->findOneBy(["roles" => "ROLE_ADMIN"]);
 
         $medias = $album
-            ? $this->entityManager->getRepository(Media::class)->findByAlbum($album)
-            : $this->entityManager->getRepository(Media::class)->findByUser($user);
+            ? $this->mediaRepository->findByAlbum($album)
+            : $this->mediaRepository->findByUser($user);
         
         $content = $this->twig->render('front/portfolio.html.twig', [
             'albums' => $albums,

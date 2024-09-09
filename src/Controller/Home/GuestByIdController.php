@@ -2,8 +2,7 @@
 
 namespace App\Controller\Home;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,15 +13,15 @@ final class GuestByIdController
 {
     public function __construct(
         private Environment $twig,
-        private EntityManagerInterface $entityManager,
+        private UserRepository $userRepository,
     )
     {}
 
     #[Route("/guest/{id}", name:"app_one_guest")]
     public function __invoke(int $id): Response
     {
-        $guest = $this->entityManager->getRepository(User::class)->find($id);
-        $content = $this->twig->render('front/guests.html.twig', [
+        $guest = $this->userRepository->find($id);
+        $content = $this->twig->render('front/guest.html.twig', [
             'guest' => $guest
         ]);
 
