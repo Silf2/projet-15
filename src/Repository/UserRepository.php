@@ -40,6 +40,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
+    public function findNotAdmin(): array
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->where('NOT u.roles LIKE :adminRole')
+        ->setParameter('adminRole', '%ROLE_ADMIN%');
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
