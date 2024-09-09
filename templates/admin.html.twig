@@ -5,7 +5,11 @@
         <div class="row">
             <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar min-vh-100 p-4">
                 <div class="position-sticky">
-                    <h1 class="text-white">Admin</h1>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <h1 class="text-white">Admin</h1>
+                    {% else %}
+                        <h1 class="text-white">Mes médias</h1>
+                    {% endif %}
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_admin_media_index') }}">
@@ -24,6 +28,11 @@
                                 </a>
                             </li>
                         {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_home') }}">
+                                Retour à l'acceuil
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

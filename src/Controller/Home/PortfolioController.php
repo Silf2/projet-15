@@ -29,12 +29,16 @@ final class PortfolioController
     public function __invoke(?int $id = null): Response
     {
         $albums = $this->albumRepository->findAll();
-        $album = $id ? $this->albumRepository->find($id) : null;
-        $user = $this->userRepository->findOneBy(["roles" => "ROLE_ADMIN"]);
-
-        $medias = $album
-            ? $this->mediaRepository->findByAlbum($album)
-            : $this->mediaRepository->findByUser($user);
+        if ($id) {
+            // Si un album spécifique est sélectionné
+            $album = $this->albumRepository->find($id);
+            $medias = $this->mediaRepository->findByAlbum($album);
+        } else {
+            // Cas "Toutes" : récupérer tous les médias, ceux associés à un album et ceux sans album
+            $medias = $this->mediaRepository->findAll();
+            
+            $album = null; // Pas d'album sélectionné dans ce cas
+        }
         
         $content = $this->twig->render('front/portfolio.html.twig', [
             'albums' => $albums,

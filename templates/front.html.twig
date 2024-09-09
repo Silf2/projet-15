@@ -19,7 +19,11 @@
                     <ul class="nav">
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_admin_media_index') }}">Admin</a>
+                                <a class="nav-link" href="{{ path('app_admin_media_index') }}">Portail Admin</a>
+                            </li>
+                        {% elseif is_granted('ROLE_USER') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_admin_media_index') }}">Mes médias</a>
                             </li>
                         {% endif %}
                         <li class="nav-item">
