@@ -21,6 +21,7 @@ security:
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
     access_control:
+        - { path: ^/blocked, roles: ROLE_BLOCKED }
         - { path: ^/admin/album, roles: ROLE_ADMIN }
         - { path: ^/admin/guest, roles: ROLE_ADMIN }
         - { path: ^/admin, roles: ROLE_USER }

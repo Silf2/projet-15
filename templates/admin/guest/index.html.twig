@@ -17,7 +17,11 @@
             <tr>
                 <td>{{ guest.name }}</td>
                 <td>
-                    <!--a href="{{ path('app_admin_album_update', {id: guest.id}) }}" class="btn btn-warning">Modifier</a-->
+                    {% if 'ROLE_BLOCKED' not in guest.roles %}
+                        <a href="{{ path('app_admin_guest_block', {id: guest.id}) }}" class="btn btn-warning">Bloquer</a>
+                    {% elseif 'ROLE_BLOCKED' in guest.roles %}
+                        <a href="{{ path('app_admin_guest_block', {id: guest.id}) }}" class="btn btn-warning">Débloquer</a>
+                    {% endif %}
                     <a href="{{ path('app_admin_guest_delete', {id: guest.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>

@@ -1,0 +1,9 @@
+{% extends 'front.html.twig' %}
+
+{% block front %}
+    <div class="d-flex flex-column justify-content-center align-items-start h-100 gap-3 ps-5">
+        <h2 class="about-title">Vous êtes bloqué.</h2>
+        <p class="about-description">Veuillez contacter un administrateur.</p>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    </div>
+{% endblock %}
