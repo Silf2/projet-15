@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th>Nom</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -16,8 +17,8 @@
             <tr>
                 <td>{{ guest.name }}</td>
                 <td>
-                    <a href="{{ path('app_admin_album_update', {id: guest.id}) }}" class="btn btn-warning">Modifier</a>
-                    <a href="{{ path('app_admin_album_delete', {id: guest.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <!--a href="{{ path('app_admin_album_update', {id: guest.id}) }}" class="btn btn-warning">Modifier</a-->
+                    <a href="{{ path('app_admin_guest_delete', {id: guest.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}
