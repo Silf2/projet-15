@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -25,7 +26,7 @@ final class GuestBlockController
         $user = $this->userRepository->findOneBy(["id" => $id]);
 
         if(!$user){
-            throw new \Exception("L'utilisateur que vous essayez de bloquer n'existe pas.");
+            throw new NotFoundHttpException("L'utilisateur que vous essayez de bloquer n'existe pas.");
         }
 
         if (!in_array('ROLE_BLOCKED', $user->getRoles())) {
