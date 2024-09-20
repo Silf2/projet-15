@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional;
 
-use App\Model\Entity\User;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -41,5 +41,11 @@ abstract class FunctionalTestCase extends WebTestCase
     protected function get(string $uri, array $parameters = []): Crawler
     {
         return $this->client->request('GET', $uri, $parameters);
+    }
+
+    protected function login(string $username = 'Ina'): void
+    {
+        $admin = $this->service(EntityManagerInterface::class)->getRepository(User::class)->findOneBy(['name' => $username]);
+        $this->client->loginUser($admin);
     }
 }
