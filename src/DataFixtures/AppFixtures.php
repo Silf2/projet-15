@@ -38,6 +38,14 @@ class AppFixtures extends Fixture
         $blocked->setPassword($this->userPasswordHasher->hashPassword($blocked, "password"));
         $manager->persist($blocked);
 
+        $notAdmin = new User();
+        $notAdmin->setName('notAdmin');
+        $notAdmin->setEmail('notAdmin@gmail.com');
+        $notAdmin->setDescription('');
+        $notAdmin->setRoles(["ROLE_USER"]);
+        $notAdmin->setPassword($this->userPasswordHasher->hashPassword($notAdmin, "password"));
+        $manager->persist($notAdmin);
+
         // Création d'utilisateurs aléatoires
         $users = [];
         for ($i = 0; $i < 10; $i++) {

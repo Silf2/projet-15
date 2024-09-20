@@ -48,4 +48,10 @@ abstract class FunctionalTestCase extends WebTestCase
         $admin = $this->service(EntityManagerInterface::class)->getRepository(User::class)->findOneBy(['name' => $username]);
         $this->client->loginUser($admin);
     }
+
+    protected function loginNotAdmin(string $username = 'notAdmin'): void
+    {
+        $admin = $this->service(EntityManagerInterface::class)->getRepository(User::class)->findOneBy(['name' => $username]);
+        $this->client->loginUser($admin);
+    }
 }
