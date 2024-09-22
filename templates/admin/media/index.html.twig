@@ -23,7 +23,7 @@
                     <td><img src="{{ asset(media.path) }}" width="75" /></td>
                     <td>{{ media.title }}</td>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <td>{{ media.user.name }}</td>
+                        <td>{{ media.user.name ?? '' }}</td>
                         <td>{{ media.album.name ?? '' }}</td>
                     {% endif %}
                     <td>
