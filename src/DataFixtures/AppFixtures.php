@@ -48,7 +48,7 @@ class AppFixtures extends Fixture
 
         // Création d'utilisateurs aléatoires
         $users = [];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $user = new User();
             $user->setName($faker->name);
             $user->setEmail($faker->unique()->email);

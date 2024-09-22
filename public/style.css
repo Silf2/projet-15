@@ -103,3 +103,9 @@ footer {
     line-height: 18.23px;
     text-align: right;
 }
+
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
