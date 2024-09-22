@@ -10,30 +10,32 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240920110805 extends AbstractMigration
+final class Version20240903122250 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Ajout de description à album, remplacement de la colonne admin par roles et password dans user';
     }
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE album (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE media (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, album_id INT DEFAULT NULL, path VARCHAR(255) NOT NULL, title VARCHAR(255) NOT NULL, INDEX IDX_6A2CA10CA76ED395 (user_id), INDEX IDX_6A2CA10C1137ABCF (album_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE `user` (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description LONGTEXT DEFAULT NULL, email VARCHAR(180) NOT NULL, password VARCHAR(250) NOT NULL, roles JSON NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE media ADD CONSTRAINT FK_6A2CA10CA76ED395 FOREIGN KEY (user_id) REFERENCES `user` (id)');
-        $this->addSql('ALTER TABLE media ADD CONSTRAINT FK_6A2CA10C1137ABCF FOREIGN KEY (album_id) REFERENCES album (id)');
+        // Ajout de la colonne description à la table album
+        $this->addSql('ALTER TABLE album ADD description LONGTEXT DEFAULT NULL');
+
+        // Suppression de la colonne admin et ajout des colonnes roles et password à la table user
+        $this->addSql('ALTER TABLE `user` DROP admin');
+        $this->addSql('ALTER TABLE `user` ADD roles JSON NOT NULL');
+        $this->addSql('ALTER TABLE `user` ADD password VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE media DROP FOREIGN KEY FK_6A2CA10CA76ED395');
-        $this->addSql('ALTER TABLE media DROP FOREIGN KEY FK_6A2CA10C1137ABCF');
-        $this->addSql('DROP TABLE album');
-        $this->addSql('DROP TABLE media');
-        $this->addSql('DROP TABLE `user`');
+        // Retrait de la colonne description de la table album
+        $this->addSql('ALTER TABLE album DROP description');
+
+        // Annuler les changements sur la table user : suppression des colonnes roles et password, et réajout de la colonne admin
+        $this->addSql('ALTER TABLE `user` ADD admin TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE `user` DROP roles');
+        $this->addSql('ALTER TABLE `user` DROP password');
     }
 }
