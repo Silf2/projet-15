@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class UserLogoutController
 {
     #[Route("/logout", name:"app_logout")]
-    public function __invoke()
+    public function __invoke(): void
     {
         //Symfony handle logout itself as long as the path exist.
     }

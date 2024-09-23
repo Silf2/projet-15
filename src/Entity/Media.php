@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -15,7 +16,7 @@ class Media
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "medias", fetch: "EAGER")]
-    private ?User $user = null;
+    private ?UserInterface $user = null;
 
     #[ORM\ManyToOne(targetEntity: Album::class, fetch: "EAGER")]
     private ?Album $album = null;
@@ -33,12 +34,12 @@ class Media
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): void
+    public function setUser(?UserInterface $user): void
     {
         $this->user = $user;
     }

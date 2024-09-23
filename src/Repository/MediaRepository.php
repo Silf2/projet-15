@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Album;
 use App\Entity\Media;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,6 +21,18 @@ class MediaRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Media::class);
     }
+
+    /**
+     * @return Media[] Returns an array of Media objects
+     */
+    public function findByAlbum(?Album $album): array
+{
+    return $this->createQueryBuilder('m')
+        ->andWhere('m.album = :album')
+        ->setParameter('album', $album)
+        ->getQuery()
+        ->getResult();
+}
 
 //    /**
 //     * @return Media[] Returns an array of Media objects
