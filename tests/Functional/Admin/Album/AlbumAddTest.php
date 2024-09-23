@@ -2,7 +2,6 @@
 
 namespace App\Tests\Functional\Admin\Album;
 
-use App\Entity\Album;
 use App\Tests\Functional\FunctionalTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
