@@ -28,3 +28,6 @@ jobs:
       - name: Run tests
         run: php bin/phpunit tests/
 
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse src -l 7
+
