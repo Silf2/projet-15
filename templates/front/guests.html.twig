@@ -6,20 +6,20 @@
             <div class="pagination">
                 <h3 class="mb-5">Invités</h3>
 
-                <div class="pages">
-                    {% if currentPage > 1 %}
-                        <a href="{{ path('app_guests', {'page': currentPage - 1}) }}">Page précédente</a>
+               <div class="pages">
+                    {% if pagination.currentPageNumber > 1 %}
+                        <a href="{{ path('app_guests', {'page': pagination.currentPageNumber - 1}) }}">Page précédente</a>
                     {% endif %}
 
-                    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+                    <span>Page {{ pagination.currentPageNumber }} sur {{ pagination.pageCount }}</span>
 
-                    {% if currentPage < totalPages %}
-                        <a href="{{ path('app_guests', {'page': currentPage + 1}) }}">Page suivante</a>
+                    {% if pagination.currentPageNumber < pagination.pageCount %}
+                        <a href="{{ path('app_guests', {'page': pagination.currentPageNumber + 1}) }}">Page suivante</a>
                     {% endif %}
                 </div>
             </div>
             <div class="guests d-flex flex-column">
-                {% for guest in guests %}
+                {% for guest in pagination.items %}
                     <div class="guest py-5 d-flex justify-content-between align-items-center">
                         <h4>{{ guest.name }} ({{ guest.medias|length }})</h4>
                         <a href="{{ path('app_one_guest', {id: guest.id}) }}">découvrir</a>
