@@ -4,7 +4,7 @@ Ce projet est le site web de la photographe Ina Zaoui. Sur ce site, vous pourrez
 
 ## Pré-requis
 
-- Php >= 8.0
+- Php >= 8.2
 - Composer
 - Symfony
 - Une application de gestion de base de données (MySQL privilégiée)

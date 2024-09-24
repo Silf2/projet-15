@@ -21,7 +21,7 @@ Si vous souhaitez améliorer le projet en proposant des fonctionnalités, ouvrez
 
 Les contributions au code sont bienvenues. Voici comment procéder : 
 
-- **Fork** le dépôt sur votre compte GitHub
+- **Clonez** le dépôt sur votre compte GitHub
 - **Créez une nouvelle branche** à partir de `main` avec un nom clair et descriptif de ce que vous faites : 
 
 ```bash
@@ -46,7 +46,7 @@ git push origin Nom-de-la-fonctionnalité
 
 ## Contribuer aux tests
 
-Assurer la qualité du code est essentiel, et les tests ne sont pas ma facilité, alors toute aide est la bienvenue !
+Assurer la qualité du code est essentiel, alors toute aide est la bienvenue !
 
 - Ecrivez des tests unitaires pour toute fonctionnalité ou bugfix si ce n'est pas déjà fait ou si les tests existants ne sont pas qualitatifs.
 - **Assurez-vous que les tests passent** avant de soumettre la pull-request ! Executez les avec : 
