@@ -33,4 +33,13 @@ class AlbumDeleteTest extends FunctionalTestCase
         $deletedAlbum = $albumRepository->find($id);
         $this->assertNull($deletedAlbum);
     }
+
+    public function testDeleteNonExistingAlbum(): void
+    {
+        $this->login();
+
+        $this->client->request('GET', '/admin/album/delete/-1');
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    }
 }

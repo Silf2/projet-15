@@ -17,4 +17,11 @@ class GuestByIdControllerTest extends FunctionalTestCase
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
+
+    public function testBlockNonExistingUser(): void
+    {
+        $this->client->request('GET', '/guest/-1');
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    }
 }

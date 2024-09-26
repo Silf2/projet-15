@@ -22,20 +22,15 @@ class MediaAddTest extends FunctionalTestCase
     }
 
     public function testAddMediaAsAdmin(){
-        // Connexion d'un administrateur
         $this->login();
         
-        // Accès à la page d'ajout de media
         $crawler = $this->get('/admin/media/add');
     
-        // Remplissage et soumission du formulaire
         $form = $crawler->selectButton('Ajouter')->form(self::getFormData());
         $this->client->submit($form);
         
-        // Vérification de la redirection
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);        
         
-        // Suivi de la redirection et vérification du succès
         $crawler = $this->client->followRedirect();
         self::assertResponseIsSuccessful();
     }

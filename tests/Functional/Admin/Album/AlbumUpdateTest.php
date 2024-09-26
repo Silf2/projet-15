@@ -33,4 +33,13 @@ class AlbumUpdateTest extends FunctionalTestCase
         $this->assertEquals('Album modifié', $updatedAlbum->getName());
         $this->assertResponseRedirects('/admin/album');
     }
+
+    public function testUpdateNonExistingAlbum(): void
+    {
+        $this->login();
+
+        $this->client->request('GET', '/admin/album/update/-1');
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    }
 }

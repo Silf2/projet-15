@@ -34,6 +34,38 @@ class MediaDeleteTest extends FunctionalTestCase
         self::assertResponseIsSuccessful();
     }
 
+    public function testDeleteNonExistingMedia(){
+        $this->loginNotAdmin();
+
+        $this->client->request('GET', '/admin/media/delete/-1');
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    }
+
+    public function testDeleteNonPropertyMedia(){
+        $this->login();
+        $crawler = $this->get('/admin/media/add');
+    
+        $form = $crawler->selectButton('Ajouter')->form(self::getFormData());
+        
+        $this->client->submit($form);
+        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);        
+        
+        $crawler = $this->client->followRedirect();
+        self::assertResponseIsSuccessful();
+
+        $media = $this->getContainer()->get(MediaRepository::class)->findOneBy([], ['id' => 'DESC']);
+
+        $this->assertNotNull($media, 'Media should be created');
+        $mediaId = $media->getId();
+
+        $this->loginNotAdmin();
+
+        $this->client->request('GET', '/admin/media/delete/' . $mediaId);
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+    }
+
     public static function getFormData(array $overrideData = []): array
     {
         return [

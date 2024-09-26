@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for C:\Users\sylva\Desktop\formation\Année 2\Projet 15\projet-15\src\Entity</title>
+  <title>Dashboard for C:\Users\sylva\Desktop\formation\Année 2\Projet 15\projet-15\src\EventSubscriber</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">C:\Users\sylva\Desktop\formation\Année 2\Projet 15\projet-15\src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Entity</a></li>
+         <li class="breadcrumb-item"><a href="index.html">EventSubscriber</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -111,8 +111,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Media.php.html#82"><abbr title="App\Entity\Media::setAlbum">setAlbum</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="User.php.html#98"><abbr title="App\Entity\User::setMedias">setMedias</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -157,7 +155,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,2,1], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -175,7 +173,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([2,0,0,0,0,0,0,0,0,0,0,28], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,3], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -225,7 +223,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,3,"<a href=\"Album.php.html#8\">App\\Entity\\Album<\/a>"],[90.9090909090909,11,"<a href=\"Media.php.html#10\">App\\Entity\\Media<\/a>"],[95.23809523809523,16,"<a href=\"User.php.html#12\">App\\Entity\\User<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,6,"<a href=\"ExceptionSubscriber.php.html#13\">App\\EventSubscriber\\ExceptionSubscriber<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -249,7 +247,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"Album.php.html#19\">App\\Entity\\Album::getId<\/a>"],[100,1,"<a href=\"Album.php.html#24\">App\\Entity\\Album::getName<\/a>"],[100,1,"<a href=\"Album.php.html#29\">App\\Entity\\Album::setName<\/a>"],[100,1,"<a href=\"Media.php.html#32\">App\\Entity\\Media::getId<\/a>"],[100,1,"<a href=\"Media.php.html#37\">App\\Entity\\Media::getUser<\/a>"],[100,1,"<a href=\"Media.php.html#42\">App\\Entity\\Media::setUser<\/a>"],[100,1,"<a href=\"Media.php.html#47\">App\\Entity\\Media::getPath<\/a>"],[100,1,"<a href=\"Media.php.html#52\">App\\Entity\\Media::setPath<\/a>"],[100,1,"<a href=\"Media.php.html#57\">App\\Entity\\Media::getTitle<\/a>"],[100,1,"<a href=\"Media.php.html#62\">App\\Entity\\Media::setTitle<\/a>"],[100,1,"<a href=\"Media.php.html#67\">App\\Entity\\Media::getFile<\/a>"],[100,1,"<a href=\"Media.php.html#72\">App\\Entity\\Media::setFile<\/a>"],[100,1,"<a href=\"Media.php.html#77\">App\\Entity\\Media::getAlbum<\/a>"],[0,1,"<a href=\"Media.php.html#82\">App\\Entity\\Media::setAlbum<\/a>"],[100,1,"<a href=\"User.php.html#45\">App\\Entity\\User::__construct<\/a>"],[100,1,"<a href=\"User.php.html#50\">App\\Entity\\User::getId<\/a>"],[100,1,"<a href=\"User.php.html#55\">App\\Entity\\User::getEmail<\/a>"],[100,1,"<a href=\"User.php.html#60\">App\\Entity\\User::setEmail<\/a>"],[100,1,"<a href=\"User.php.html#67\">App\\Entity\\User::getName<\/a>"],[100,1,"<a href=\"User.php.html#72\">App\\Entity\\User::setName<\/a>"],[100,1,"<a href=\"User.php.html#77\">App\\Entity\\User::getDescription<\/a>"],[100,1,"<a href=\"User.php.html#82\">App\\Entity\\User::setDescription<\/a>"],[100,1,"<a href=\"User.php.html#90\">App\\Entity\\User::getMedias<\/a>"],[0,1,"<a href=\"User.php.html#98\">App\\Entity\\User::setMedias<\/a>"],[100,1,"<a href=\"User.php.html#106\">App\\Entity\\User::getPassword<\/a>"],[100,1,"<a href=\"User.php.html#111\">App\\Entity\\User::setPassword<\/a>"],[100,1,"<a href=\"User.php.html#121\">App\\Entity\\User::getRoles<\/a>"],[100,1,"<a href=\"User.php.html#133\">App\\Entity\\User::setRoles<\/a>"],[100,1,"<a href=\"User.php.html#145\">App\\Entity\\User::getUserIdentifier<\/a>"],[100,1,"<a href=\"User.php.html#153\">App\\Entity\\User::eraseCredentials<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"ExceptionSubscriber.php.html#15\">App\\EventSubscriber\\ExceptionSubscriber::__construct<\/a>"],[100,1,"<a href=\"ExceptionSubscriber.php.html#20\">App\\EventSubscriber\\ExceptionSubscriber::getSubscribedEvents<\/a>"],[100,4,"<a href=\"ExceptionSubscriber.php.html#27\">App\\EventSubscriber\\ExceptionSubscriber::onKernelException<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
