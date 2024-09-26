@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -29,6 +30,11 @@ final class AlbumUpdateController
     public function __invoke(Request $request, int $id): Response
     {
         $album = $this->entityManager->getRepository(Album::class)->find($id);
+
+        if(!$album) {
+            throw new NotFoundHttpException("L'album que vous essayez de modifier n'existe pas.");
+        }
+
         $form = $this->formFactory->create(AlbumType::class, $album);
         $form->handleRequest($request);
 

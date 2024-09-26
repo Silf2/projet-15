@@ -5,6 +5,7 @@ namespace App\Controller\Home;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
@@ -21,6 +22,11 @@ final class GuestByIdController
     public function __invoke(int $id): Response
     {
         $guest = $this->userRepository->find($id);
+
+        if(!$guest) {
+            throw new NotFoundHttpException("L'utilisateur que vous essayez de consulter n'existe pas.");
+        }
+
         $content = $this->twig->render('front/guest.html.twig', [
             'guest' => $guest
         ]);
