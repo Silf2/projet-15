@@ -23,7 +23,7 @@ final class GuestByIdController
     {
         $guest = $this->userRepository->find($id);
 
-        if(!$guest) {
+        if(!$guest || in_array('ROLE_BLOCKED', $guest->getRoles())) {
             throw new NotFoundHttpException("L'utilisateur que vous essayez de consulter n'existe pas.");
         }
 

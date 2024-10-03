@@ -27,10 +27,14 @@ final class PortfolioController
             $album = $this->albumRepository->find($id);
             $medias = $this->mediaRepository->findByAlbum($album);
         } else {
-            $medias = $this->mediaRepository->findAll();
-            
+            $medias = $this->mediaRepository->findBy(['album' => null]);
             $album = null;
         }
+
+        $medias = array_filter($medias, function($media) {
+            $user = $media->getUser();
+            return !in_array('ROLE_BLOCKED', $user->getRoles());
+        });
         
         $content = $this->twig->render('front/portfolio.html.twig', [
             'albums' => $albums,

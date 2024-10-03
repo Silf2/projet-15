@@ -23,7 +23,9 @@ final class GuestController
     #[Route("/guests", name:"app_guests")]
     public function __invoke(Request $request): Response
     {
-        $queryBuilder = $this->userRepository->createQueryBuilder('u');
+        $queryBuilder = $this->userRepository->createQueryBuilder('u')
+            ->where('NOT u.roles LIKE :blockedRole')
+            ->setParameter('blockedRole', '%ROLE_BLOCKED%');
 
         $pagination = $this->paginator->paginate(
             $queryBuilder,
