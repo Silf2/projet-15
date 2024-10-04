@@ -33,7 +33,7 @@ final class PortfolioController
 
         $medias = array_filter($medias, function($media) {
             $user = $media->getUser();
-            return !in_array('ROLE_BLOCKED', $user->getRoles());
+            return $user !== null && !in_array('ROLE_BLOCKED', $user->getRoles());
         });
         
         $content = $this->twig->render('front/portfolio.html.twig', [
