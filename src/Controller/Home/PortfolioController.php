@@ -27,7 +27,7 @@ final class PortfolioController
             $album = $this->albumRepository->find($id);
             $medias = $this->mediaRepository->findByAlbum($album);
         } else {
-            $medias = $this->mediaRepository->findBy(['album' => null]);
+            $medias = $this->mediaRepository->findAll();
             $album = null;
         }
 
