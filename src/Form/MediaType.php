@@ -18,6 +18,12 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('album', EntityType::class, [
+                'label' => 'Album',
+                'required' => true,
+                'class' => Album::class,
+                'choice_label' => 'name',
+            ])
             ->add('file', FileType::class, [
                 'label' => 'Image',
                 'constraints' => [
@@ -42,14 +48,8 @@ class MediaType extends AbstractType
             $builder
                 ->add('user', EntityType::class, [
                     'label' => 'Utilisateur',
-                    'required' => false,
+                    'required' => true,
                     'class' => User::class,
-                    'choice_label' => 'name',
-                ])
-                ->add('album', EntityType::class, [
-                    'label' => 'Album',
-                    'required' => false,
-                    'class' => Album::class,
                     'choice_label' => 'name',
                 ])
             ;
